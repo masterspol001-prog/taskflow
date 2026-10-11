@@ -1,0 +1,17 @@
+{
+  "name": "TaskFlow",
+  "short_name": "TaskFlow",
+  "description": "Local-first tasks with an AI operating layer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1014",
+  "theme_color": "#6c5ce7",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
