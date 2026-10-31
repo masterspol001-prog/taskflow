@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy · TaskFlow</title>
+    <style>
+      body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1.25rem; line-height: 1.6; color: #16120e; }
+      a { color: #4c3bb8; }
+    </style>
+  </head>
+  <body>
+    <p><a href="/">Back to TaskFlow</a></p>
+    <h1>Privacy</h1>
+    <p>Last updated: 23 October 2026</p>
+    <p>TaskFlow is a local-first app. Tasks, projects, goals, reviews, and settings are stored in this browser (localStorage). There is no TaskFlow account and no TaskFlow server that stores your work.</p>
+    <h2>What stays on this device</h2>
+    <ul>
+      <li>Tasks, projects, goals, weekly reviews, progress, and theme</li>
+      <li>Trial flags and a redeemed license key</li>
+      <li>An optional AI API key you type in Settings (never uploaded to TaskFlow)</li>
+    </ul>
+    <h2>What can leave this origin</h2>
+    <ul>
+      <li>Checkout: paying opens the seller’s payment provider (Stripe, Razorpay, or similar). That provider sees whatever their checkout collects.</li>
+      <li>Optional LLM: if you save a key and click Plan with AI, the prompt is sent to the endpoint you configured. TaskFlow does not proxy it.</li>
+      <li>Fonts: the app prefers system fonts. If a host still loads a webfont, that request leaves the origin.</li>
+    </ul>
+    <h2>No sale of task data</h2>
+    <p>We do not run ads, do not sell task content, and do not upload the conversion funnel. Funnel events stay in this browser.</p>
+    <h2>Cookies and tracking</h2>
+    <p>TaskFlow does not set advertising cookies. localStorage is used for the app itself.</p>
+    <h2>Your rights</h2>
+    <p>Export JSON or CSV from Settings. Erase all data from Settings. Clearing this site’s storage in the browser also deletes the local copy. There is no TaskFlow account to request deletion from.</p>
+    <p>Questions: use the support email in Settings if the seller configured one, or the email on your payment receipt.</p>
+  </body>
+</html>

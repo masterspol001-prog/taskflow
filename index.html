@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#efe8dc" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="TaskFlow" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="TaskFlow — local-first Capture · Focus · Finish. Goals, Plan, and Review unlock with a prepaid license on this device." />
+    <meta property="og:title" content="TaskFlow" />
+    <meta property="og:description" content="Local-first Capture · Focus · Finish. Prepaid Pro license on this device." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <title>TaskFlow</title>
+  </head>
+  <body class="m-0 h-full w-full">
+    <div id="root" class="min-h-dvh w-full"></div>
+    <script>
+      (function () {
+        var shown = false
+        function render(message) {
+          if (shown) return
+          var root = document.getElementById('root')
+          if (!root || root.childElementCount > 0) return
+          shown = true
+          var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          var bg = dark ? '#0e0d0b' : '#efe8dc'
+          var fg = dark ? '#f4efe6' : '#16120e'
+          var muted = dark ? '#93897c' : '#5c564c'
+          root.setAttribute('style', 'min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:' + bg + ';color:' + fg + ';font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif')
+          root.innerHTML =
+            '<div style="max-width:32rem;text-align:center">' +
+            '<div style="font-size:15px;font-weight:700">TaskFlow couldn&rsquo;t start</div>' +
+            '<p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:' + muted + '">Your data is safe. Reload the page; if this keeps happening, clear this site&rsquo;s cache.</p>' +
+            '<pre style="margin:16px 0 0;padding:12px;border-radius:12px;background:rgba(127,127,127,0.12);font-size:12px;line-height:1.5;text-align:left;white-space:pre-wrap;word-break:break-word;color:' + muted + '"></pre>' +
+            '<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">' +
+            '<button onclick="location.reload()" style="cursor:pointer;border:0;border-radius:12px;padding:10px 16px;font-weight:600;font-size:14px;background:#6c5ce7;color:#fff">Reload</button>' +
+            '<button id="tf-clear" style="cursor:pointer;border-radius:12px;padding:10px 16px;font-weight:600;font-size:14px;background:transparent;color:' + fg + ';border:1px solid rgba(127,127,127,0.35)">Clear cache &amp; reload</button>' +
+            '</div></div>'
+          var pre = root.querySelector('pre')
+          if (pre) pre.textContent = message
+          var clear = document.getElementById('tf-clear')
+          if (clear) clear.onclick = function () {
+            var done = function () { location.reload() }
+            try {
+              var jobs = []
+              if ('caches' in window) jobs.push(caches.keys().then(function (keys) { return Promise.all(keys.map(function (k) { return caches.delete(k) })) }))
+              if ('serviceWorker' in navigator) jobs.push(navigator.serviceWorker.getRegistrations().then(function (regs) { return Promise.all(regs.map(function (r) { return r.unregister() })) }))
+              Promise.all(jobs).then(done, done)
+              return
+            } catch (e) {}
+            done()
+          }
+        }
+        window.addEventListener('error', function (e) { render(e.message || 'Failed to load the app.') }, true)
+        window.addEventListener('unhandledrejection', function (e) { render(String((e.reason && e.reason.message) || e.reason || 'Startup failed.')) })
+        setTimeout(function () { render('The app took too long to start. Check your connection and reload.') }, 10000)
+      })()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

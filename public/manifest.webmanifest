@@ -1,0 +1,27 @@
+{
+  "name": "TaskFlow",
+  "short_name": "TaskFlow",
+  "description": "Local-first Capture · Focus · Finish. Prepaid Pro license on this device.",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#efe8dc",
+  "theme_color": "#efe8dc",
+  "categories": ["productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

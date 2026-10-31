@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+*.log
+.env
+.env.*
+.vercel/
+!/.env.example
+scripts/keys/
+*.zip
+
+.env
+.env.local
+.env.production
+node_modules/
+dist/
